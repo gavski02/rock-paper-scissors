@@ -1,5 +1,61 @@
 <script type="text/javascript">
+  let randomNumber = 0;
+  let gameState = false;
+
   function computerPlay() {
-    
+
+    randomNumber = Math.floor((Math.random() * 3) + 1);
+    console.log(randomNumber);
+
+    if (randomNumber == 1) {
+      return "Paper";
+    } else if (randomNumber == 2) {
+      return "Scissors";
+    } else if (randomNumber == 3) {
+      return "Rock";
+    }
   }
+
+  function playerPlay() {
+    return prompt("Rock, Paper, Scissors...");
+  }
+
+
+
+  function game(playerSelection, computerSelection) {
+    if(playerSelection.toLowerCase() == computerSelection.toLowerCase()){
+      alert("Tie");
+      gameState = false;
+    }
+    else if(playerSelection.toLowerCase() == "rock" && computerSelection.toLowerCase() == "scissors"){
+      alert("You Win!!!");
+      gameState = true;
+    }
+    else if (playerSelection.toLowerCase() == "scissors" && computerSelection.toLowerCase() == "paper") {
+      alert("You Win!!!");
+      gameState = true;
+    }
+    else if (playerSelection.toLowerCase() == "paper" && computerSelection.toLowerCase() == "rock") {
+      alert("You Win!!!");
+      gameState = true;
+    }
+    else if(computerSelection.toLowerCase() == "rock" && playerSelection.toLowerCase() == "scissors"){
+      alert("You Lose. Try again");
+      gameState = false;
+    }
+    else if (computerSelection.toLowerCase() == "scissors" && playerSelection.toLowerCase() == "paper") {
+      alert("You Lose. Try again");
+      gameState = false;
+    }
+    else if (computerSelection.toLowerCase() == "paper" && playerSelection.toLowerCase() == "rock") {
+      alert("You Lose. Try again");
+      gameState = false;
+    }
+
+  }
+
+console.log(computerPlay());
+while(gameState == false){
+  game(playerPlay(), computerPlay());
+}
 </script>
